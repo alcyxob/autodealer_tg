@@ -12,8 +12,8 @@ import (
 )
 
 func main() {
-	tgApi := os.Getenv("TG_API")
-	bot, err := tgbotapi.NewBotAPI(tgApi)
+	tgAPI := os.Getenv("TG_API")
+	bot, err := tgbotapi.NewBotAPI(tgAPI)
 	if err != nil {
 		log.Panic(err)
 	}

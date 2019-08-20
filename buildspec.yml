@@ -14,6 +14,8 @@ phases:
 
       # Install Testify to use common assertions and mocks in tests
       - go get -u github.com/stretchr/testify
+
+      # Install AWS Lambda Go
       - go get -u github.com/aws/aws-lambda-go/lambda
 
   pre_build:
