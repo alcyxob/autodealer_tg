@@ -5,13 +5,15 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	tgbotapi "github.com/Syfaro/telegram-bot-api"
 )
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI("")
+	tgApi := os.Getenv("TG_API")
+	bot, err := tgbotapi.NewBotAPI(tgApi)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -48,7 +50,7 @@ func main() {
 }
 
 func getAudi() string {
-	url := "https://auto.ria.com/search/?categories.main.id=1&brand.id[0]=6&model.id[0]=49&year[0].gte=2009&year[0].lte=2012&region.id[0]=7&region.id[1]=10&gearbox.id[0]=2&gearbox.id[1]=3&gearbox.id[2]=4&gearbox.id[3]=5&drive.id[0]=1&abroad.not=0&custom.not=1&page=0&size=100"
+	url := "https://auto.ria.com/search/?body.id[0]=3&year[0].gte=2010&year[0].lte=2013&categories.main.id=1&brand.id[0]=48&model.id[0]=428&price.currency=1&drive.id[0]=1&abroad.not=0&custom.not=1&page=0&size=100"
 	resp, err := http.Get(url)
 	response := "not found"
 	if err != nil {
